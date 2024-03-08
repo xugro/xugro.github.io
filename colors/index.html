@@ -58,9 +58,16 @@
 input[type=radio] {
 	display: none;
 }
-input[value="show"]:checked,
+input[value="show"]:checked+label+label+input+div{
+	display: block;
+}
 input[value="show"]:checked+label,
-input[value="show"]:checked+label+input+label{
+input[value="show"]:checked+label+label{
+	display: none;
+}
+input[value="hide"]:checked+div,
+input[value="hide"]:checked+div+input+label,
+input[value="hide"]:checked+div+input+label+label{
 	display: none;
 }
 </style>
@@ -69,21 +76,26 @@ input[value="show"]:checked+label+input+label{
 		<div class="box">
 			<div class="smollerbox">
 				<div class="adjustable-list">
+					<input name="switch_0" value="hide" type="radio" id="hide-last_0" disabled>
 					<div class="list-element"></div>
 					<input name="switch_1" value="show" type="radio" id="show-next_1">
 					<label for="show-next_1" class="buttons">Show next</label>
-					<input name="switch_0" value="hide" type="radio" id="hide-last_0" disabled>
 					<label for="hide-last_0" class="buttons disabled">Hide last</label>
+					<input name="switch_1" value="hide" type="radio" id="hide-last_1" checked>
 					<div class="list-element"></div>
 					<input name="switch_2" value="show" type="radio" id="show-next_2">
 					<label for="show-next_2" class="buttons">Show next</label>
-					<input name="switch_1" value="hide" type="radio" id="hide-last_1" checked>
 					<label for="hide-last_1" class="buttons">Hide last</label>
-					<div class="list-element"></div>
-					<input name="switch_3" value="show" type="radio" id="show-next_3" disabled>
-					<label for="show-next_3" class="buttons disabled">Show next</label>
 					<input name="switch_2" value="hide" type="radio" id="hide-last_2" checked>
+					<div class="list-element"></div>
+					<input name="switch_3" value="show" type="radio" id="show-next_3">
+					<label for="show-next_3" class="buttons">Show next</label>
 					<label for="hide-last_2" class="buttons">Hide last</label>
+					<input name="switch_3" value="hide" type="radio" id="hide-last_3" checked>
+					<div class="list-element"></div>
+					<input name="switch_4" value="show" type="radio" id="show-next_4" disabled>
+					<label for="show-next_4" class="buttons disabled">Show next</label>
+					<label for="hide-last_3" class="buttons">Hide last</label>
 				</div>
 			</div>
 		</div>
