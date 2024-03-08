@@ -23,11 +23,68 @@
 	width: 300px;
 	height: calc(100% - 34px);
 }
+
+.adjustable-list{
+	position: absolute;
+	height: 200px;
+	width: 300px;
+}
+
+.list-element{
+	position: relative;
+	border-radius: 10px;
+	border: 2px solid #444444;
+	height: 20px;
+	width: 240px;
+	margin: 10px 29px 0;
+}
+.buttons{
+	display: inline-block;
+	position: relative;
+	border-radius: 10px;
+	border: 2px;
+	cursor: pointer;
+	height: 20px;
+	width: 100px;	
+	left: 29px;
+	background: #4287f5;
+	text-align: center;
+	margin: 5px 10px;
+}
+.disabled{
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+input[type=radio] {
+	display: none;
+}
+input[value="show"]:checked,
+input[value="show"]:checked+label,
+input[value="show"]:checked+label+input+label{
+	display: none;
+}
 </style>
 	</head>
 	<body>
 		<div class="box">
 			<div class="smollerbox">
+				<div class="adjustable-list">
+					<div class="list-element"></div>
+					<input name="switch_1" value="show" type="radio" id="show-next_1">
+					<label for="show-next_1" class="buttons">Show next</label>
+					<input name="switch_0" value="hide" type="radio" id="hide-last_0" disabled>
+					<label for="hide-last_0" class="buttons disabled">Hide last</label>
+					<div class="list-element"></div>
+					<input name="switch_2" value="show" type="radio" id="show-next_2">
+					<label for="show-next_2" class="buttons">Show next</label>
+					<input name="switch_1" value="hide" type="radio" id="hide-last_1" checked>
+					<label for="hide-last_1" class="buttons">Hide last</label>
+					<div class="list-element"></div>
+					<input name="switch_3" value="show" type="radio" id="show-next_3" disabled>
+					<label for="show-next_3" class="buttons disabled">Show next</label>
+					<input name="switch_2" value="hide" type="radio" id="hide-last_2" checked>
+					<label for="hide-last_2" class="buttons">Hide last</label>
+				</div>
 			</div>
 		</div>
 	</body>
