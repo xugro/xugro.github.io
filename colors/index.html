@@ -25,8 +25,8 @@
 }
 
 .adjustable-list{
-	position: absolute;
-	height: 200px;
+	display: table;
+	position: relative;
 	width: 300px;
 }
 
@@ -49,12 +49,12 @@
 	display: inline-block;
 	position: relative;
 	border-radius: 10px;
-	border: 2px;
+	border: 0;
 	cursor: pointer;
 	height: 20px;
 	width: 100px;	
 	left: 29px;
-	background: #4287f5;
+	background: #34b1d6;
 	text-align: center;
 	margin: 5px 10px;
 }
@@ -77,20 +77,28 @@ input[value="hide"]:checked+div+input+label,
 input[value="hide"]:checked+div+input+label+label{
 	display: none;
 }
+.settings{
+	border-radius: 17px;
+	background-color: #15bac4;
+	opacity: 0.4;
+	width: 80%;
+	margin: auto;
+	height: 60px;
+}
 </style>
 	</head>
 	<body>
 		<div class="box">
 			<div class="smollerbox">
-				<div class="adjustable-list">
+				<form class="adjustable-list" id="form" method="post">
 					<div class="list-element">
 						<div></div>
-						<input class="wavelen" type="number">
+						<input class="wavelen" type="number" name="light-source_1" form="form">
 					</div>
 					<input name="switch_0" value="hide" type="radio" id="hide-last_0" disabled>
 					<div class="list-element">
 						<div></div>
-						<input class="wavelen" type="number">
+						<input class="wavelen" type="number" name="light-source_2" form="form">
 					</div>
 					<input name="switch_1" value="show" type="radio" id="show-next_1">
 					<label for="show-next_1" class="buttons">Show next</label>
@@ -98,7 +106,7 @@ input[value="hide"]:checked+div+input+label+label{
 					<input name="switch_1" value="hide" type="radio" id="hide-last_1" checked>
 					<div class="list-element">
 						<div></div>
-						<input class="wavelen" type="number">
+						<input class="wavelen" type="number" name="light-source_3">
 					</div>
 					<input name="switch_2" value="show" type="radio" id="show-next_2">
 					<label for="show-next_2" class="buttons">Show next</label>
@@ -106,7 +114,7 @@ input[value="hide"]:checked+div+input+label+label{
 					<input name="switch_2" value="hide" type="radio" id="hide-last_2" checked>
 					<div class="list-element">
 						<div></div>
-						<input class="wavelen" type="number">
+						<input class="wavelen" type="number" name="light-source_4">
 					</div>
 					<input name="switch_3" value="show" type="radio" id="show-next_3">
 					<label for="show-next_3" class="buttons">Show next</label>
@@ -114,11 +122,13 @@ input[value="hide"]:checked+div+input+label+label{
 					<input name="switch_3" value="hide" type="radio" id="hide-last_3" checked>
 					<div class="list-element">
 						<div></div>
-						<input class="wavelen" type="number">
+						<input class="wavelen" type="number" name="light-source_5">
 					</div>
 					<input name="switch_4" value="show" type="radio" id="show-next_4" disabled>
 					<label for="show-next_4" class="buttons disabled">Show next</label>
 					<label for="hide-last_3" class="buttons">Hide last</label>
+				</form>
+				<div class="settings">
 				</div>
 			</div>
 		</div>
