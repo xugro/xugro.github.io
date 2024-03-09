@@ -32,11 +32,18 @@
 
 .list-element{
 	position: relative;
-	border-radius: 10px;
+	border-radius: 17px;
 	border: 2px solid #444444;
-	height: 20px;
+	height: 30px;
 	width: 240px;
 	margin: 10px 29px 0;
+}
+.wavelen{
+	position: absolute;
+	right: 10%;
+	top: 4px;
+	width: 40%;
+	height: 16px;
 }
 .buttons{
 	display: inline-block;
@@ -76,23 +83,39 @@ input[value="hide"]:checked+div+input+label+label{
 		<div class="box">
 			<div class="smollerbox">
 				<div class="adjustable-list">
+					<div class="list-element">
+						<div></div>
+						<input class="wavelen" type="number">
+					</div>
 					<input name="switch_0" value="hide" type="radio" id="hide-last_0" disabled>
-					<div class="list-element"></div>
+					<div class="list-element">
+						<div></div>
+						<input class="wavelen" type="number">
+					</div>
 					<input name="switch_1" value="show" type="radio" id="show-next_1">
 					<label for="show-next_1" class="buttons">Show next</label>
 					<label for="hide-last_0" class="buttons disabled">Hide last</label>
 					<input name="switch_1" value="hide" type="radio" id="hide-last_1" checked>
-					<div class="list-element"></div>
+					<div class="list-element">
+						<div></div>
+						<input class="wavelen" type="number">
+					</div>
 					<input name="switch_2" value="show" type="radio" id="show-next_2">
 					<label for="show-next_2" class="buttons">Show next</label>
 					<label for="hide-last_1" class="buttons">Hide last</label>
 					<input name="switch_2" value="hide" type="radio" id="hide-last_2" checked>
-					<div class="list-element"></div>
+					<div class="list-element">
+						<div></div>
+						<input class="wavelen" type="number">
+					</div>
 					<input name="switch_3" value="show" type="radio" id="show-next_3">
 					<label for="show-next_3" class="buttons">Show next</label>
 					<label for="hide-last_2" class="buttons">Hide last</label>
 					<input name="switch_3" value="hide" type="radio" id="hide-last_3" checked>
-					<div class="list-element"></div>
+					<div class="list-element">
+						<div></div>
+						<input class="wavelen" type="number">
+					</div>
 					<input name="switch_4" value="show" type="radio" id="show-next_4" disabled>
 					<label for="show-next_4" class="buttons disabled">Show next</label>
 					<label for="hide-last_3" class="buttons">Hide last</label>
