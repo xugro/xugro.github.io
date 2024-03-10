@@ -3,12 +3,17 @@
 	<head>
 		<title>🌈</title>
 <style>
+:root{
+	--primary-color: #34b1d6;
+	--secondary-color: #15bac4;
+	--accent-color: #44536b;
+}
 .box{
 	position: relative;
 	top: 40px;
 	margin: auto;
 	border-radius: 10px;
-	border: 2px solid #00BBAA;
+	border: 3px solid var(--primary-color);
 	padding: 15px;
 	width: 800px;
 	height: 400px;
@@ -19,7 +24,7 @@
 	top: 15px;
 
 	border-radius: 10px;
-	border: 2px solid #009B8A;
+	border: 2px solid var(--secondary-color);
 	width: 300px;
 	height: calc(100% - 34px);
 }
@@ -33,7 +38,7 @@
 .list-element{
 	position: relative;
 	border-radius: 17px;
-	border: 2px solid #444444;
+	border: 2px solid var(--accent-color);
 	height: 30px;
 	width: 240px;
 	margin: 10px 29px 0;
@@ -54,12 +59,12 @@
 	height: 20px;
 	width: 100px;	
 	left: 29px;
-	background: #34b1d6;
+	background: var(--primary-color);
 	text-align: center;
 	margin: 5px 10px;
 }
 .disabled{
-	opacity: 0.6;
+	opacity: 0.5;
 	cursor: not-allowed;
 }
 input[type=radio] {
@@ -79,7 +84,7 @@ input[value="hide"]:checked+div+input+label+label{
 }
 .settings{
 	border-radius: 17px;
-	background-color: #15bac4;
+	background-color: var(--secondary-color);
 	opacity: 0.4;
 	width: 80%;
 	margin: auto;
@@ -93,12 +98,12 @@ input[value="hide"]:checked+div+input+label+label{
 				<form class="adjustable-list" id="form" method="post">
 					<div class="list-element">
 						<div></div>
-						<input class="wavelen" type="number" name="light-source_1" form="form">
+						<input class="wavelen" type="number" name="light-source_1" form="form" min="380" max="700">
 					</div>
 					<input name="switch_0" value="hide" type="radio" id="hide-last_0" disabled>
 					<div class="list-element">
 						<div></div>
-						<input class="wavelen" type="number" name="light-source_2" form="form">
+						<input class="wavelen" type="number" name="light-source_2" form="form" min="380" max="700">
 					</div>
 					<input name="switch_1" value="show" type="radio" id="show-next_1">
 					<label for="show-next_1" class="buttons">Show next</label>
@@ -106,7 +111,7 @@ input[value="hide"]:checked+div+input+label+label{
 					<input name="switch_1" value="hide" type="radio" id="hide-last_1" checked>
 					<div class="list-element">
 						<div></div>
-						<input class="wavelen" type="number" name="light-source_3">
+						<input class="wavelen" type="number" name="light-source_3" form="form" min="380" max="700">
 					</div>
 					<input name="switch_2" value="show" type="radio" id="show-next_2">
 					<label for="show-next_2" class="buttons">Show next</label>
@@ -114,7 +119,7 @@ input[value="hide"]:checked+div+input+label+label{
 					<input name="switch_2" value="hide" type="radio" id="hide-last_2" checked>
 					<div class="list-element">
 						<div></div>
-						<input class="wavelen" type="number" name="light-source_4">
+						<input class="wavelen" type="number" name="light-source_4" form="form" min="380" max="700">
 					</div>
 					<input name="switch_3" value="show" type="radio" id="show-next_3">
 					<label for="show-next_3" class="buttons">Show next</label>
@@ -122,7 +127,7 @@ input[value="hide"]:checked+div+input+label+label{
 					<input name="switch_3" value="hide" type="radio" id="hide-last_3" checked>
 					<div class="list-element">
 						<div></div>
-						<input class="wavelen" type="number" name="light-source_5">
+						<input class="wavelen" type="number" name="light-source_5" form="form" min="380" max="700">
 					</div>
 					<input name="switch_4" value="show" type="radio" id="show-next_4">
 					<label for="show-next_4" class="buttons">Show next</label>
@@ -130,7 +135,7 @@ input[value="hide"]:checked+div+input+label+label{
 					<input name="switch_4" value="hide" type="radio" id="hide-last_4" checked>
 					<div class="list-element">
 						<div></div>
-						<input class="wavelen" type="number" name="light-source_6">
+						<input class="wavelen" type="number" name="light-source_6" form="form" min="380" max="700">
 					</div>
 					<input name="switch_5" value="show" type="radio" id="show-next_5" disabled>
 					<label for="show-next_5" class="buttons disabled">Show next</label>
