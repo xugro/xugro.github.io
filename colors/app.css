@@ -62,9 +62,6 @@ input[type=radio] {
 	display: none;
 	position:absolute;
 }
-input[class="selector"]:checked+div{
-	display: block;
-}
 input[class="selector"]:checked+div+label,
 input[class="selector"]:checked+div+label+label{
 	display: inline-block;
