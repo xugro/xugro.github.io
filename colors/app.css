@@ -30,9 +30,15 @@
 	position: relative;
 	border-radius: 17px;
 	border: 2px solid var(--accent-color);
+	background-color: color-mix(in srgb,var(--primary-color),#0000 90%);
 	height: 30px;
 	width: 240px;
 	margin: 10px 29px 0;
+}
+.wavelen-label{
+	position: absolute;
+	left: 10%;
+	top: 6px;
 }
 .wavelen{
 	position: absolute;
@@ -55,7 +61,7 @@
 	margin: 5px 10px;
 }
 .disabled{
-	opacity: 0.5;
+	opacity: 0.57;
 	cursor: not-allowed;
 }
 input[type=radio] {
