@@ -22,8 +22,8 @@
 	width: 800px;
 }
 #rainbow{
-	border: 7px solid var(--accent-color);
 	border-radius: 7px;
+	border: 7px solid var(--accent-color);
 	margin: -7px;
 }
 .smollerbox{
