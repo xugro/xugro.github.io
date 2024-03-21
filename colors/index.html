@@ -7,6 +7,8 @@
 	</head>
 	<body>
 		<div class="box">
+			<div class="display">
+			</div>
 			<div class="smollerbox">
 				<form class="adjustable-list" id="form" method="post">
 					<div class="list-element">
@@ -61,6 +63,15 @@
 			<script>
 				make_rainbow_on_canvas("rainbow", 370, 730);
 			</script>
+		</div>
+		<div class="experinments" id="hide">
+				<canvas id="graph" width="350" height="400"></canvas>
+				<script>
+					if(0){
+						document.getElementById("hide").style.display="block";
+						draw_graph(document.getElementById("graph").getContext("2d"), 3, 10,390, 460,-60, 440, 640, 100, 400, 0.9505,1,1.0890, true);
+					}
+				</script>
 		</div>
 	</body>
 </html>

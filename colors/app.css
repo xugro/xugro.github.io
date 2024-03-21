@@ -8,6 +8,13 @@
 	width: 800px;
 	height: 400px;
 }
+.display{
+	width: calc(100% - 304px);
+}
+#graph{
+	display: block;
+	margin: auto;
+}
 .second-box{
 	position: relative;
 	margin: 40px auto auto;
@@ -94,3 +101,6 @@ input[class="selector"]:checked+div ~ div{
 	height: 60px;
 }
 
+.experinments{
+	display: none;
+}
