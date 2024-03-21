@@ -44,9 +44,9 @@ function XYZ_to_sRGB(X, Y, Z){
 	const r_lin =  3.2406255*X -1.5372080*Y -0.4986286*Z;
 	const g_lin = -0.9689307*X +1.8757561*Y +0.0415175*Z;
 	const b_lin =  0.0557101*X -0.2040211*Y +1.0569959*Z;
-	const r_norm = r_lin/Math.sqrt(r_lin*r_lin + g_lin*g_lin + b_lin*b_lin);// these make the diagram look better but break the rainbow in the invisible parts
-	const g_norm = g_lin/Math.sqrt(r_lin*r_lin + g_lin*g_lin + b_lin*b_lin);
-	const b_norm = b_lin/Math.sqrt(r_lin*r_lin + g_lin*g_lin + b_lin*b_lin);
+//	const r_norm = r_lin/Math.sqrt(r_lin*r_lin + g_lin*g_lin + b_lin*b_lin);// these make the diagram look better but break the rainbow in the invisible parts
+//	const g_norm = g_lin/Math.sqrt(r_lin*r_lin + g_lin*g_lin + b_lin*b_lin);
+//	const b_norm = b_lin/Math.sqrt(r_lin*r_lin + g_lin*g_lin + b_lin*b_lin);
 	const r_unclamped = sRGB_gamma_correction(r_lin);
 	const g_unclamped = sRGB_gamma_correction(g_lin);
 	const b_unclamped = sRGB_gamma_correction(b_lin);
