@@ -67,9 +67,9 @@ function XYZ_to_rgb(X,Y,Z){
 	return RGB_to_rgb(r,g,b);
 }
 function XYZ_to_rgb_n(X,Y,Z){ // normalized
-	const x = X / (X+Y+Z);
-	const y = Y / (X+Y+Z);
-	const z = Z / (X+Y+Z);
+	const x = X;
+	const y = Y;
+	const z = Z;
 	const mx = Math.max(Math.max(x, y), z);
 	return XYZ_to_rgb(x/mx,y/mx,z/mx);
 }
