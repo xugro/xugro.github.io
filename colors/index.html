@@ -16,7 +16,7 @@
 						<input class="wavelen" type="number" name="light-source_1" form="form" min="380" max="700" id="ls1">
 					</div>
 					<input name="switch" value="0" type="radio" class="selector" id="show-0" checked>
-					<div class="list-element">
+					<div class="list-element focustip">
 						<label class="wavelen-label" for="ls2">Wavelength:</label>
 						<input class="wavelen" type="number" name="light-source_2" form="form" min="380" max="700" id="ls2">
 					</div>
@@ -53,6 +53,13 @@
 					<input name="switch" value="5" type="radio" class="selector" id="show-5" disabled>
 				</form>
 				<div class="settings">
+					<select id="diagram_type" form="form">
+						<option selected disabled>Select Diagram</option>
+						<optgroup label="CIE 1931">
+							<option value="1">Use Premade Image</option>
+							<option value="2">Generate Diagram</option>
+						</optgroup>
+					</select>
 				</div>
 			</div>
 		</div>
