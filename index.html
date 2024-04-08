@@ -11,8 +11,10 @@
 	{% include nav.html %}
 	{% endcomment %}
 
+	<ul>
 	{% for item in site.data.project-list %}
-		<a href="{{ item.link }}">{{ item.name }}</a>
+		<li><a href="{{ item.link }}">{{ item.name }}</a></li>
 	{% endfor %}
+	</ul>
 	</body>
 </html>
