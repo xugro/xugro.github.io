@@ -7,7 +7,9 @@
 		<title>xugro's web projects</title>
 	</head>
 	<body>
+	{% comment %}
 	{% include nav.html %}
+	{% endcomment %}
 
 	{% for item in site.data.project-list %}
 		<a href="{{ item.link }}">{{ item.name }}</a>
