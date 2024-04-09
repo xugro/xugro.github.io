@@ -12,10 +12,10 @@
 	position: relative;
 	margin: 40px auto auto;
 	border-radius: 10px;
-	border: 3px solid var(--primary-color);
+	border: 3px solid var(--secondary-color);
 	padding: 15px;
 	width: 800px;
-	background-color: color-mix(in srgb,var(--primary-color),#0000 90%);
+	background-color: color-mix(in srgb,var(--secondary-color),#0000 90%);
 }
 .display{
 	width: calc(100% - 304px);
