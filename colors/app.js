@@ -169,6 +169,123 @@ function draw_graph(ctx, lw, x0, y0, x1, y1, wavelen_min, wavelen_max, wavelen_s
 	}
 }
 
+function make_points_on_premade_cie1931_diagram(pointcount = 2){
+	const svgns = "http://www.w3.org/2000/svg";
+	const svgdocument = document.getElementById("diagram_cie1931_svg").contentDocument;
+	const container = svgdocument.getElementsByTagName("svg").item(0);
+
+	const children = container.childNodes;
+
+	children.forEach(function (currentValue, currentIndex, listObj){
+		while(currentValue && currentValue.nodeName == "circle"){
+			container.removeChild(currentValue);
+			currentValue = children[currentIndex];
+		}
+	});
+
+	for(let i = 0; i<pointcount; i++){
+		const circle = svgdocument.createElementNS(svgns, "circle");
+		circle.setAttributeNS(null, 'id', i);
+		circle.setAttributeNS(null, 'r', 5);
+		circle.setAttributeNS(null, 'style', 'fill: none; stroke: black; stroke-width: 3;' );
+		container.appendChild(circle);
+	}
+
+}
+
+function draw_on_premade_cie1931_diagram(points){
+	const svgns = "http://www.w3.org/2000/svg";
+	const svgdocument = document.getElementById("diagram_cie1931_svg").contentDocument;
+	const container = svgdocument.getElementsByTagName("svg").item(0);
+	const border = svgdocument.getElementById("border")
+	const border_length = border.getTotalLength();
+
+	if(svgdocument.getElementById(0) == null){
+		make_points_on_premade_cie1931_diagram(points.length);
+	}
+
+	var path = "M";
+	var path_end = "";
+
+	for(let i = 0; i<points.length; i++){
+		const dist = points[i]*border_length;
+		const point = border.getPointAtLength(dist);
+		const circle = svgdocument.getElementById(i);
+		circle.setAttributeNS(null, 'cx', point.x);
+		circle.setAttributeNS(null, 'cy', point.y);
+		path += " " + point.x + " " + point.y + " L";
+		if(i == 0){
+			path_end += point.x + " " + point.y;
+		}
+	}
+	path += path_end;
+
+	if(svgdocument.getElementById("gamut_outline") == null){
+		const gamut = svgdocument.createElementNS(svgns, "path");
+		gamut.setAttributeNS(null, 'id', "gamut_outline");
+		gamut.setAttributeNS(null, 'style', "fill: none; stroke: black; stroke-width: 2;");
+		container.appendChild(gamut);
+	}
+
+	const gmt = svgdocument.getElementById("gamut_outline");
+	gmt.setAttributeNS(null, 'd', path);
+}
+
+function premade_cie1931_diagram_wavelength_to_distance_ratio(lambda){
+//	return (lambda-380)/(700-380); // uncomment to add more points to values
+	const values = [[380, 0], [460, 0.0228125], [480, 0.0884375], [500, 0.3224375], [520, 0.5040625], [540, 0.6040625], [560, 0.713125], [580, 0.82375], [600, 0.914375], [620, 0.965625], [640, 0.9878125], [660, 0.996875], [680, 0.999375], [700, 1]];
+	let x = 0;
+	for(let i = 1; i<values.length; i++){
+		if( lambda >= values[i-1][0] && lambda <= values[i][0] ){
+			x = values[i-1][1] + ( values[i][1] - values[i-1][1] )*( (lambda - values[i-1][0])/(values[i][0] - values[i-1][0]) );
+		}
+	}
+	return x;
+}
+
+function draw_on_premade_cie1931_diagram_from_wavelengths(points){
+	draw_on_premade_cie1931_diagram(points.map(premade_cie1931_diagram_wavelength_to_distance_ratio).sort(function(a,b){ return a-b; }));
+}
+
+
+
+
+
+
+
+
+function make_points(count = 2){ // these are here to support multiple diagrams in the future (mainly the generated one)
+	make_points_on_premade_cie1931_diagram(count);
+}
+function draw_points_from_wavelength(points){
+	draw_on_premade_cie1931_diagram_from_wavelengths(points);
+}
+
+var selected_switch_index = 0;
+
+function update_points(){
+	const point_count = selected_switch_index + 2;
+	const wavelengths = [];
+
+	for(var i=0; i<point_count; i++){
+		wavelengths.push(document.getElementById("ls"+(i+1)).value);
+	}
+	draw_points_from_wavelength(wavelengths);
+}
+
+function detect_change(){
+	const radios = document.getElementsByName("switch");
+	for(var i = 0; i < radios.length; i++){
+		if(radios[i].checked && selected_switch_index != i){
+			selected_switch_index = i;
+			make_points(i+2);
+			update_points();
+		}
+	}
+}
+
+detect_change();
+
 
 
 

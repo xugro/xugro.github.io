@@ -11,6 +11,9 @@
 .display{
 	width: calc(100% - 304px);
 }
+.diagram{
+	transform: scale(0.83) translateY(-73px);
+}
 #graph{
 	display: block;
 	margin: auto;
@@ -98,6 +101,7 @@ input.selector {
 	position:absolute;
 	width: 0;
 	height: 0;
+	border: 0 !important;
 }
 input.selector:focus-visible+div.list-element.focustip{
 	margin-bottom: 90px;

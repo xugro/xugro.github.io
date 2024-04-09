@@ -8,56 +8,57 @@
 	<body>
 		<div class="box">
 			<div class="display">
+				<object data="CIE1931xy_blank.svg" type="image/svg+xml" class="diagram" id="diagram_cie1931_svg"></object>
 			</div>
 			<div class="smollerbox">
 				<form class="adjustable-list" id="form" method="post">
 					<div class="list-element">
 						<label class="wavelen-label" for="ls1">Wavelength:</label>
-						<input class="wavelen" type="number" name="light-source_1" form="form" min="380" max="700" id="ls1">
+						<input class="wavelen" type="number" name="light-source_1" form="form" min="380" max="700" id="ls1" onchange="update_points()">
 					</div>
-					<input name="switch" value="0" type="radio" class="selector" id="show-0" checked>
+					<input name="switch" value="0" type="radio" class="selector" id="show-0" onchange="detect_change()" checked>
 					<div class="list-element focustip">
 						<label class="wavelen-label" for="ls2">Wavelength:</label>
-						<input class="wavelen" type="number" name="light-source_2" form="form" min="380" max="700" id="ls2">
+						<input class="wavelen" type="number" name="light-source_2" form="form" min="380" max="700" id="ls2" onchange="update_points()">
 					</div>
-					<label for="show-1" class="buttons">Show next</label>
-					<label for="show-0" class="buttons disabled">Hide last</label>
-					<input name="switch" value="1" type="radio" class="selector" id="show-1">
+					<label for="show-1" class="buttons">Add Point</label>
+					<label for="show-0" class="buttons disabled">Remove Point</label>
+					<input name="switch" value="1" type="radio" class="selector" id="show-1" onchange="detect_change()">
 					<div class="list-element">
 						<label class="wavelen-label" for="ls3">Wavelength:</label>
-						<input class="wavelen" type="number" name="light-source_3" form="form" min="380" max="700" id="ls3">
+						<input class="wavelen" type="number" name="light-source_3" form="form" min="380" max="700" id="ls3" onchange="update_points()">
 					</div>
-					<label for="show-2" class="buttons">Show next</label>
-					<label for="show-0" class="buttons">Hide last</label>
-					<input name="switch" value="2" type="radio" class="selector" id="show-2">
+					<label for="show-2" class="buttons">Add Point</label>
+					<label for="show-0" class="buttons">Remove Point</label>
+					<input name="switch" value="2" type="radio" class="selector" id="show-2" onchange="detect_change()">
 					<div class="list-element">
 						<label class="wavelen-label" for="ls4">Wavelength:</label>
-						<input class="wavelen" type="number" name="light-source_4" form="form" min="380" max="700" id="ls4">
+						<input class="wavelen" type="number" name="light-source_4" form="form" min="380" max="700" id="ls4" onchange="update_points()">
 					</div>
-					<label for="show-3" class="buttons">Show next</label>
-					<label for="show-1" class="buttons">Hide last</label>
-					<input name="switch" value="3" type="radio" class="selector" id="show-3">
+					<label for="show-3" class="buttons">Add Point</label>
+					<label for="show-1" class="buttons">Remove Point</label>
+					<input name="switch" value="3" type="radio" class="selector" id="show-3" onchange="detect_change()">
 					<div class="list-element">
 						<label class="wavelen-label" for="ls5">Wavelength:</label>
-						<input class="wavelen" type="number" name="light-source_5" form="form" min="380" max="700" id="ls5">
+						<input class="wavelen" type="number" name="light-source_5" form="form" min="380" max="700" id="ls5" onchange="update_points()">
 					</div>
-					<label for="show-4" class="buttons">Show next</label>
-					<label for="show-2" class="buttons">Hide last</label>
-					<input name="switch" value="4" type="radio" class="selector" id="show-4">
+					<label for="show-4" class="buttons">Add Point</label>
+					<label for="show-2" class="buttons">Remove Point</label>
+					<input name="switch" value="4" type="radio" class="selector" id="show-4" onchange="detect_change()">
 					<div class="list-element">
 						<label class="wavelen-label" for="ls6">Wavelength:</label>
-						<input class="wavelen" type="number" name="light-source_6" form="form" min="380" max="700" id="ls6">
+						<input class="wavelen" type="number" name="light-source_6" form="form" min="380" max="700" id="ls6" onchange="update_points()">
 					</div>
-					<label for="show-5" class="buttons disabled">Show next</label>
-					<label for="show-3" class="buttons">Hide last</label>
-					<input name="switch" value="5" type="radio" class="selector" id="show-5" disabled>
+					<label for="show-5" class="buttons disabled">Add Point</label>
+					<label for="show-3" class="buttons">Remove Point</label>
+					<input name="switch" value="5" type="radio" class="selector" id="show-5" onchange="detect_change()" disabled>
 				</form>
 				<div class="settings">
-					<select id="diagram_type" form="form">
-						<option selected disabled>Select Diagram</option>
+					<select id="diagram_type" form="form" disabled>
+						<option disabled>Select Diagram</option>
 						<optgroup label="CIE 1931">
-							<option value="1">Use Premade Image</option>
-							<option value="2">Generate Diagram</option>
+							<option value="1" selected>CIE 1931: Use Premade Image</option>
+							<option value="2">CIE 1931: Generate Diagram</option>
 						</optgroup>
 					</select>
 				</div>
