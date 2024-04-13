@@ -306,7 +306,6 @@ function update_points(){
 
 function detect_change(){
 	const radios = document.getElementsByName("switch");
-	console.log(radios);
 	for(var i = 0; i < radios.length; i++){
 		if(radios[i].checked && selected_switch_index != i){
 			selected_switch_index = i;
