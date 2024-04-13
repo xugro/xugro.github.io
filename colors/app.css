@@ -50,9 +50,12 @@
 }
 
 .adjustable-list{
-	display: table;
+	display: block;
 	position: relative;
 	width: 300px;
+	max-height: 300px;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .list-element{
@@ -62,7 +65,7 @@
 	background-color: color-mix(in srgb,var(--primary-color),#0000 90%);
 	height: 30px;
 	width: 240px;
-	margin: 10px 29px 0;
+	margin: 10px 28px 0;
 }
 .wavelen-label{
 	position: absolute;
