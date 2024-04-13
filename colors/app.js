@@ -100,14 +100,20 @@ function make_XYZ_gradient_on_canvas(canvas_id, X1, Y1, Z1, X2, Y2, Z2, stopcoun
 	const width = canvas.clientWidth;
 	const height = canvas.clientHeight;
 	const grd = ctx.createLinearGradient(0, 0, width, 0);
+//	const grd_test = ctx.createLinearGradient(0, 0, width, 0);
 	for(let i = 0; i <= 1; i += 1/(stopcount -1)){
 		const X = X1*i + X2*(1-i);
 		const Y = Y1*i + Y2*(1-i);
 		const Z = Z1*i + Z2*(1-i);
 		grd.addColorStop(i, XYZ_to_rgb(X, Y, Z) );
+/*
+		grd_test.addColorStop(i, XYZ_to_rgb(X/Y, 1, Z/Y) ); // test gradient with max luminosity
+// */
 	}
 	ctx.fillStyle = grd;
 	ctx.fillRect(0, 0, width, height);
+//	ctx.fillStyle = grd_test;
+//	ctx.fillRect(0, height/2, width, height);
 }
 
 function make_XYZ_gradient_on_canvas_from_wavelength(canvas_id, lambda1, lambda2, stopcount = 21){
