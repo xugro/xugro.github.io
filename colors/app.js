@@ -283,18 +283,41 @@ function draw_points_from_wavelength(points){
 
 var selected_switch_index = 0;// initial index is 0 so points don't get created before user interaction (this is so create_points doesn't run before svg is loaded)
 
+function update_gradient(){
+	if(selected_switch_index > 0){
+		return;
+	}
+
+	const w0 = document.getElementById("ls0").value;
+	const w1 = document.getElementById("ls1").value;
+
+	make_XYZ_gradient_on_canvas_from_wavelength("gradient", w0, w1, 201)
+}
+
 function toggle_gradient(){
 	const checkbox = document.getElementById("grad");
+	const gradbox = document.getElementById("gradbox");
 
 	if(selected_switch_index > 0){
+		gradbox.style.display = "none";
 		checkbox.disabled = true;
 		return;
 	}
 
 	checkbox.disabled = false;
+	if(checkbox.checked){
+		gradbox.style.display = "block";
+	} else {
+		gradbox.style.display = "none";
+		return;
+	}
+
+	update_gradient();
 }
 
 function update_points(){
+	update_gradient();
+
 	const point_count = selected_switch_index + 2;
 	const wavelengths = [];
 

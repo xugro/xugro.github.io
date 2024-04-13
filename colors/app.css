@@ -38,6 +38,11 @@
 	border: 7px solid var(--accent-color);
 	margin: -7px;
 }
+#gradient{
+	border-radius: 7px;
+	border: 7px solid var(--accent-color);
+	margin: -7px;
+}
 .smollerbox{
 	position: absolute;
 	right: 15px;
