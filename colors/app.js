@@ -281,7 +281,18 @@ function draw_points_from_wavelength(points){
 	draw_on_premade_cie1931_diagram_from_wavelengths(points);
 }
 
-var selected_switch_index = 0;
+var selected_switch_index = 0;// initial index is 0 so points don't get created before user interaction (this is so create_points doesn't run before svg is loaded)
+
+function toggle_gradient(){
+	const checkbox = document.getElementById("grad");
+
+	if(selected_switch_index > 0){
+		checkbox.disabled = true;
+		return;
+	}
+
+	checkbox.disabled = false;
+}
 
 function update_points(){
 	const point_count = selected_switch_index + 2;
@@ -295,6 +306,7 @@ function update_points(){
 
 function detect_change(){
 	const radios = document.getElementsByName("switch");
+	console.log(radios);
 	for(var i = 0; i < radios.length; i++){
 		if(radios[i].checked && selected_switch_index != i){
 			selected_switch_index = i;
@@ -302,9 +314,11 @@ function detect_change(){
 			update_points();
 		}
 	}
+
+	toggle_gradient();
 }
 
-detect_change();
+document.addEventListener("DOMContentLoaded", (event) => { detect_change(); });
 
 
 
