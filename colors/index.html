@@ -1,3 +1,6 @@
+---
+light-source-count: 5
+---
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,45 +16,20 @@
 			<div class="smollerbox">
 				<form class="adjustable-list" id="form" method="post">
 					<div class="list-element">
-						<label class="wavelen-label" for="ls1">Wavelength:</label>
-						<input class="wavelen" type="number" name="light-source_1" form="form" min="380" max="700" id="ls1" onchange="update_points()">
+						<label class="wavelen-label" for="ls0">Wavelength:</label>
+						<input class="wavelen" type="number" name="light-source_0" form="form" min="380" max="700" id="ls0" onchange="update_points()">
 					</div>
 					<input name="switch" value="0" type="radio" class="selector" id="show-0" onchange="detect_change()" checked>
-					<div class="list-element focustip">
-						<label class="wavelen-label" for="ls2">Wavelength:</label>
-						<input class="wavelen" type="number" name="light-source_2" form="form" min="380" max="700" id="ls2" onchange="update_points()">
+
+				{% for i in (1..page.light-source-count) %}
+					<div class="list-element{%if i == 1%} focustip{%endif%}">
+						<label class="wavelen-label" for="ls{{i}}">Wavelength:</label>
+						<input class="wavelen" type="number" name="light-source_{{i}}" form="form" min="380" max="700" id="ls{{i}}" onchange="update_points()">
 					</div>
-					<label for="show-1" class="buttons">Add Point</label>
-					<label for="show-0" class="buttons disabled">Remove Point</label>
-					<input name="switch" value="1" type="radio" class="selector" id="show-1" onchange="detect_change()">
-					<div class="list-element">
-						<label class="wavelen-label" for="ls3">Wavelength:</label>
-						<input class="wavelen" type="number" name="light-source_3" form="form" min="380" max="700" id="ls3" onchange="update_points()">
-					</div>
-					<label for="show-2" class="buttons">Add Point</label>
-					<label for="show-0" class="buttons">Remove Point</label>
-					<input name="switch" value="2" type="radio" class="selector" id="show-2" onchange="detect_change()">
-					<div class="list-element">
-						<label class="wavelen-label" for="ls4">Wavelength:</label>
-						<input class="wavelen" type="number" name="light-source_4" form="form" min="380" max="700" id="ls4" onchange="update_points()">
-					</div>
-					<label for="show-3" class="buttons">Add Point</label>
-					<label for="show-1" class="buttons">Remove Point</label>
-					<input name="switch" value="3" type="radio" class="selector" id="show-3" onchange="detect_change()">
-					<div class="list-element">
-						<label class="wavelen-label" for="ls5">Wavelength:</label>
-						<input class="wavelen" type="number" name="light-source_5" form="form" min="380" max="700" id="ls5" onchange="update_points()">
-					</div>
-					<label for="show-4" class="buttons">Add Point</label>
-					<label for="show-2" class="buttons">Remove Point</label>
-					<input name="switch" value="4" type="radio" class="selector" id="show-4" onchange="detect_change()">
-					<div class="list-element">
-						<label class="wavelen-label" for="ls6">Wavelength:</label>
-						<input class="wavelen" type="number" name="light-source_6" form="form" min="380" max="700" id="ls6" onchange="update_points()">
-					</div>
-					<label for="show-5" class="buttons disabled">Add Point</label>
-					<label for="show-3" class="buttons">Remove Point</label>
-					<input name="switch" value="5" type="radio" class="selector" id="show-5" onchange="detect_change()" disabled>
+					<label for="show-{{i}}" class="buttons{%if i == page.light-source-count%} disabled{%endif%}">Add Point</label>
+					<label for="show-{{i|minus: 2}}" class="buttons{%if i == 1%} disabled{%endif%}">Remove Point</label>
+					<input name="switch" value="{{i}}" type="radio" class="selector" id="show-{{i}}" onchange="detect_change()"{%if i == page.light-source-count%} disabled{%endif%}>
+				{% endfor %}
 				</form>
 				<div class="settings">
 					<select id="diagram_type" form="form">

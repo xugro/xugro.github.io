@@ -268,7 +268,7 @@ function update_points(){
 	const wavelengths = [];
 
 	for(var i=0; i<point_count; i++){
-		wavelengths.push(document.getElementById("ls"+(i+1)).value);
+		wavelengths.push(document.getElementById("ls"+i).value);
 	}
 	draw_points_from_wavelength(wavelengths);
 }
