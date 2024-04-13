@@ -94,6 +94,26 @@ function make_rainbow_on_canvas(canvas_id, min_wavelength = 380, max_wavelength 
 	ctx.fillRect(0,0,width,height);
 }
 
+function make_XYZ_gradient_on_canvas(canvas_id, X1, Y1, Z1, X2, Y2, Z2, stopcount = 21){
+	const canvas = document.getElementById(canvas_id);
+	const ctx = canvas.getContext("2d");
+	const width = canvas.clientWidth;
+	const height = canvas.clientHeight;
+	const grd = ctx.createLinearGradient(0, 0, width, 0);
+	for(let i = 0; i <= 1; i += 1/(stopcount -1)){
+		const X = X1*i + X2*(1-i);
+		const Y = Y1*i + Y2*(1-i);
+		const Z = Z1*i + Z2*(1-i);
+		grd.addColorStop(i, XYZ_to_rgb(X, Y, Z) );
+	}
+	ctx.fillStyle = grd;
+	ctx.fillRect(0, 0, width, height);
+}
+
+function make_XYZ_gradient_on_canvas_from_wavelength(canvas_id, lambda1, lambda2, stopcount = 21){
+	make_XYZ_gradient_on_canvas(canvas_id, x_bar(lambda1), y_bar(lambda1), z_bar(lambda1), x_bar(lambda2), y_bar(lambda2), z_bar(lambda2), stopcount);
+}
+
 function draw_line_gradient(ctx, x0, y0, x1, y1, color1, color2){
 	const grd = ctx.createLinearGradient(x0, y0, x1, y1);
 	grd.addColorStop(0, color1);
