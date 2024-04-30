@@ -64,25 +64,26 @@
 }
 
 .list-element{
-	position: relative;
 	border-radius: 17px;
 	border: 2px solid var(--accent-color);
 	background-color: color-mix(in srgb,var(--primary-color),#0000 90%);
-	height: 30px;
+	height: auto;
 	width: 240px;
 	margin: 10px 28px 0;
 }
 .wavelen-label{
-	position: absolute;
-	left: 10%;
-	top: 6px;
+	display:inline-block;
+	position: relative;
+	overflow-wrap: break-word;
+	margin: 6px 0 6px 24px;
+	vertical-align: middle;
 }
 .wavelen{
-	position: absolute;
-	right: 10%;
-	top: 4px;
+	display:inline-block;
 	width: 40%;
 	height: 16px;
+	vertical-align: middle;
+	margin: 2px auto;
 }
 .buttons{
 	display: none;
@@ -90,7 +91,6 @@
 	border-radius: 10px;
 	border: 0;
 	cursor: pointer;
-	height: 20px;
 	width: 100px;	
 	left: 29px;
 	background: var(--secondary-color);
@@ -146,12 +146,16 @@ input.selector:checked+div ~ div{
 	margin: auto;
 	height: 80px;
 }
-select{
-	width: 80%;
-	margin: 6px 10%;
-	height: 20px;
+select.setting{
+	height: calc(1rem + 4px);
 	border-radius: 4px;
+	max-width: 90%;
 	border: 1px solid var(--secondary-color);
+	margin: 6px 0;
+	text-align: center;
+}
+label.setting{
+	display: block;
 }
 input[type="checkbox"]{
 	margin-left: 10px;

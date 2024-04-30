@@ -32,14 +32,16 @@ light-source-count: 5
 				{% endfor %}
 				</form>
 				<div class="settings">
-					<select id="diagram_type" form="form">
-						<option disabled>Select Diagram</option>
-						<optgroup label="CIE 1931 xy">
-							<option value="1" selected>CIE1931: Use Image</option>
-							<option value="2" disabled>CIE1931: Generate</option>
-						</optgroup>
-					</select>
-					<label>
+					<div style="text-align: center;">
+						<select id="diagram_type" form="form" class="setting">
+							<option disabled>Select Diagram</option>
+							<optgroup label="CIE 1931 xy">
+								<option value="1" selected>CIE1931: Use Image</option>
+								<option value="2" disabled>CIE1931: Generate</option>
+							</optgroup>
+						</select>
+					</div>
+					<label class="setting">
 						<input name="grad" id="grad" type="checkbox" onchange="toggle_gradient()">Show gradient
 					</label>
 				</div>
