@@ -2,11 +2,13 @@
 .navbar-wrapper{
 	border-bottom: 1px solid var(--accent-color);
 	margin: 0;
+	padding: 0;
 }
 .navbar{
 	box-sizing: border-box;
 	border-radius: 23px;
-	border: 0px solid color-mix(in srgb,var(--primary-color),#0000 23%);
+	border: 3px solid color-mix(in srgb,var(--primary-color),#0000 23%);
+	padding: 1px;
 	width: clamp(200px, 80%, 1000px);
 	margin: 0 auto 0;
 	text-align: center;
@@ -15,29 +17,30 @@
 	flex-direction: column;
 }
 .navbar nav{
-	margin-top: auto;
-	width: 100%;
+	margin: auto auto 0;
 }
 .navbar nav ul{
-	width: calc(100% - 34px);
 	list-style-type: none;
-	margin: auto;
+	margin: 0;
 	padding: 0;
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
 }
 .navbar nav ul li{
 }
 .navbar nav ul li a{
 	display: block;
-	padding: 8px 3px;
+	padding: 8px 5px;
 	margin: 0 3px;
-	color: var(--accent-color);
+	color: color-mix(in srgb,var(--text-color),#0000 23%);
 	text-decoration: none;
+	font-weight: bold;
+	transition-duration: 100ms;
+	transition-timing-function: ease-in-out;
 }
 .navbar nav ul li a.selected{
-	background-color: color-mix(in srgb,var(--accent-color),#0000 92%);
+	background-color: color-mix(in srgb,var(--accent-color),#0000 87%);
+	color: color-mix(in srgb,var(--text-color),#0000 0%);
 }
 .navbar nav ul li a:hover{
 	background-color: color-mix(in srgb,var(--accent-color),#0000 73%);
