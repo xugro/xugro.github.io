@@ -6,16 +6,16 @@
 .navbar{
 	box-sizing: border-box;
 	border-radius: 23px;
-	border: 3px solid color-mix(in srgb,var(--primary-color),#0000 23%);
+	border: 0px solid color-mix(in srgb,var(--primary-color),#0000 23%);
 	width: clamp(200px, 80%, 1000px);
-	height: 80px;
 	margin: 0 auto 0;
 	text-align: center;
 	position: relative;
+	display: flex;
+	flex-direction: column;
 }
 .navbar nav{
-	position: absolute;
-	bottom: 0;
+	margin-top: auto;
 	width: 100%;
 }
 .navbar nav ul{
