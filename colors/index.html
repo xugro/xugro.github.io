@@ -1,81 +1,79 @@
 ---
+title: 🌈
+stylesheet: app.css
+script: app.js
 light-source-count: 5
+layout: default
 ---
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>🌈</title>
-		<link rel="stylesheet" href="app.css">
-		<script src="app.js"></script>
-	</head>
-	<body>
-		<div class="box">
-			<div class="display">
-				<object data="CIE1931xy_blank.svg" type="image/svg+xml" class="diagram" id="diagram_cie1931_svg"></object>
+<div class="box">
+	<div class="display">
+		<object data="CIE1931xy_blank.svg" type="image/svg+xml" class="diagram" id="diagram_cie1931_svg"></object>
+	</div>
+	<div class="smollerbox">
+		<form class="adjustable-list" id="form" method="post">
+			<div class="list-element">
+				<label class="wavelen-label" for="ls0">Wavelength:</label>
+				<input class="wavelen" type="number" name="light-source_0" form="form" min="380" max="700" id="ls0" onchange="update_points()">
 			</div>
-			<div class="smollerbox">
-				<form class="adjustable-list" id="form" method="post">
-					<div class="list-element">
-						<label class="wavelen-label" for="ls0">Wavelength:</label>
-						<input class="wavelen" type="number" name="light-source_0" form="form" min="380" max="700" id="ls0" onchange="update_points()">
-					</div>
-					<input name="switch" value="0" type="radio" class="selector" id="show-0" onchange="detect_change()" checked>
+			<input name="switch" value="0" type="radio" class="selector" id="show-0" onchange="detect_change()" checked>
 
-				{% for i in (1..page.light-source-count) %}
-					<div class="list-element{%if i == 1%} focustip{%endif%}">
-						<label class="wavelen-label" for="ls{{i}}">Wavelength:</label>
-						<input class="wavelen" type="number" name="light-source_{{i}}" form="form" min="380" max="700" id="ls{{i}}" onchange="update_points()">
-					</div>
-					<label for="show-{{i}}" class="buttons{%if i == page.light-source-count%} disabled{%endif%}">Add Point</label>
-					<label {%if i > 1%}for="show-{{i|minus: 2}}"{%endif%} class="buttons{%if i == 1%} disabled{%endif%}">Remove Point</label>
-					<input name="switch" value="{{i}}" type="radio" class="selector" id="show-{{i}}" onchange="detect_change()"{%if i == page.light-source-count%} disabled{%endif%}>
-				{% endfor %}
-				</form>
-				<div class="settings">
-					<div style="text-align: center;">
-						<select id="diagram_type" form="form" class="setting">
-							<option disabled>Select Diagram</option>
-							<optgroup label="CIE 1931 xy">
-								<option value="1" selected>CIE1931: Use Image</option>
-								<option value="2" disabled>CIE1931: Generate</option>
-							</optgroup>
-						</select>
-					</div>
-					<label class="setting">
-						<input name="grad" id="grad" type="checkbox" onchange="toggle_gradient()">Show gradient
-					</label>
-				</div>
+		{% for i in (1..page.light-source-count) %}
+			<div class="list-element{%if i == 1%} focustip{%endif%}">
+				<label class="wavelen-label" for="ls{{i}}">Wavelength:</label>
+				<input class="wavelen" type="number" name="light-source_{{i}}" form="form" min="380" max="700" id="ls{{i}}" onchange="update_points()">
 			</div>
+			<label for="show-{{i}}" class="buttons{%if i == page.light-source-count%} disabled{%endif%}">Add Point</label>
+			<label {%if i > 1%}for="show-{{i|minus: 2}}"{%endif%} class="buttons{%if i == 1%} disabled{%endif%}">Remove Point</label>
+			<input name="switch" value="{{i}}" type="radio" class="selector" id="show-{{i}}" onchange="detect_change()"{%if i == page.light-source-count%} disabled{%endif%}>
+		{% endfor %}
+		</form>
+		<div class="settings">
+			<div style="text-align: center;">
+				<select id="diagram_type" form="form" class="setting">
+					<option disabled>Select Diagram</option>
+					<optgroup label="CIE 1931 xy">
+						<option value="1" selected>CIE1931: Use Image</option>
+						<option value="2" disabled>CIE1931: Generate</option>
+					</optgroup>
+				</select>
+			</div>
+			<label class="setting">
+				<input name="grad" id="grad" type="checkbox" onchange="toggle_gradient()">Show gradient
+			</label>
 		</div>
-		<div class="second-box" id="gradbox">
-			<canvas id="gradient" width="800" height="200"></canvas>
-		</div>
+	</div>
+</div>
+<div class="second-box" id="gradbox">
+	<canvas id="gradient" width="800" height="200"></canvas>
+</div>
 
-		<div class="about">
-			<p> I wanted to see the color gamut I could produce with RGB lasers. There wasn't any tool to draw one automatically so I had to manually draw them, so I built this page to help me compare the colors of different combinations of wavelengths. </p>
-			<p> I have no previous experience with HTML, CSS, JavaScript or Jekyll; but I think I managed to create something usable, and liked using all four of them. :D</p>
-			<p> This page is more like a working prototype right now so I hope to add more features in the future.</p>
+<div class="about">
+	<p> I wanted to see the color gamut I could produce with RGB lasers. There wasn't any tool to draw one automatically so I had to manually draw them, so I built this page to help me compare the colors of different combinations of wavelengths. </p>
+	<p> I have no previous experience with HTML, CSS, JavaScript or Jekyll; but I think I managed to create something usable, and liked using all four of them. :D</p>
+	<p> This page is more like a working prototype right now so I hope to add more features in the future.</p>
 
-			<p> The diagram is taken from <a href="https://commons.wikimedia.org/wiki/File:CIE1931xy_blank.svg" style="color: color-mix(in srgb,var(--primary-color),#000 40%)">here</a> and I mapped the wavelengths to the outer path by hand so the placements are just approximations.</p>
-			<p> The rainbow below (and the gradient above) is created procedurally and I wanted to generate the diagram itself too.</p>
-			<noscript> This means they won't show without javascript enabled.</noscript>
+	<p> The diagram is taken from <a href="https://commons.wikimedia.org/wiki/File:CIE1931xy_blank.svg" style="color: color-mix(in srgb,var(--primary-color),#000 40%)">here</a> and I mapped the wavelengths to the outer path by hand so the placements are just approximations.</p>
+	<p> The rainbow below (and the gradient above) is created procedurally and I wanted to generate the diagram itself too.</p>
+	<noscript> This means they won't show without javascript enabled.</noscript>
 
-		</div>
-		
-		<div class="second-box">
-			<canvas id="rainbow" width="800" height="200"></canvas>
-			<script>
-				make_rainbow_on_canvas("rainbow", 370, 730);
-			</script>
-		</div>
-		<div class="experinments" id="hide">
-				<canvas id="graph" width="350" height="400"></canvas>
-				<script>
-					if(0){
-						document.getElementById("hide").style.display="block";
-						draw_graph(document.getElementById("graph").getContext("2d"), 3, 10,390, 460,-60, 440, 640, 100, 400, 0.9505,1,1.0890, true);
-					}
-				</script>
-		</div>
-	</body>
-</html>
+</div>
+
+<div class="second-box">
+	<canvas id="rainbow" width="800" height="200"></canvas>
+	<script>
+		make_rainbow_on_canvas("rainbow", 370, 730);
+	</script>
+</div>
+<div class="experinments" id="hide">
+	<canvas id="graph" width="350" height="400"></canvas>
+
+	<canvas id="colormatch" width="400" height="200"></canvas>
+	<script>
+		if(0){
+			document.getElementById("hide").style.display="block";
+			draw_graph(document.getElementById("graph").getContext("2d"), 3, 10,390, 460,-60, 440, 640, 100, 400, 0.9505,1,1.0890, true);
+
+			draw_cie1931_xyz_color_match("colormatch");
+		}
+	</script>
+</div>

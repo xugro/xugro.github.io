@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+	<head>
+		<title>{{ page.title }}</title>
+		{% if page.stylesheet %}
+			<link rel="stylesheet" href="{{ page.stylesheet }}">
+		{% endif %}
+		{% if page.script %}
+			<script src="{{ page.script }}"></script>
+		{% endif %}
+	</head>
+	<body style="margin: 0;">
+		{% if true %}
+			{% include nav.html %}
+		{% endif %}
+		{{ content }}
+	</body>
+</html>

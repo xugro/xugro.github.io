@@ -1,8 +1,48 @@
 @import "site-colors.css";
+.navbar-wrapper{
+	border-bottom: 1px solid var(--accent-color);
+	margin: 0;
+}
 .navbar{
+	box-sizing: border-box;
 	border-radius: 23px;
-	border: 3px solid var(--primary-color);
+	border: 3px solid color-mix(in srgb,var(--primary-color),#0000 23%);
 	width: clamp(200px, 80%, 1000px);
-	height: 40px;
+	height: 80px;
+	margin: 0 auto 0;
+	text-align: center;
+	position: relative;
+}
+.navbar nav{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+.navbar nav ul{
+	width: calc(100% - 34px);
+	list-style-type: none;
 	margin: auto;
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+.navbar nav ul li{
+}
+.navbar nav ul li a{
+	display: block;
+	padding: 8px 3px;
+	margin: 0 3px;
+	color: var(--accent-color);
+	text-decoration: none;
+}
+.navbar nav ul li a.selected{
+	background-color: color-mix(in srgb,var(--accent-color),#0000 92%);
+}
+.navbar nav ul li a:hover{
+	background-color: color-mix(in srgb,var(--accent-color),#0000 73%);
+}
+.navbar nav ul li a:active{
+	background-color: color-mix(in srgb,var(--accent-color),#0000 0%);
+	color: white;
 }

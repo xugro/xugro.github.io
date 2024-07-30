@@ -1,20 +1,10 @@
 ---
+title: xugro's web projects
+layout: default
 ---
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>xugro's web projects</title>
-	</head>
-	<body>
-	{% comment %}
-	{% include nav.html %}
-	{% endcomment %}
-
-	<ul>
-	{% for item in site.data.project-list %}
-		<li><a href="{{ item.link }}">{{ item.name }}</a></li>
-	{% endfor %}
-	</ul>
-	</body>
-</html>
+<ul>
+{% for item in site.data.project-list %}
+	<li><a href="{{ item.link }}">{{ item.name }}</a></li>
+{% endfor %}
+</ul>

@@ -27,6 +27,10 @@
 	display: block;
 	margin: auto;
 }
+#colormatch{
+	display: block;
+	margin: auto;
+}
 .second-box{
 	position: relative;
 	margin: 40px auto auto;

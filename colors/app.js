@@ -94,6 +94,40 @@ function make_rainbow_on_canvas(canvas_id, min_wavelength = 380, max_wavelength 
 	ctx.fillRect(0,0,width,height);
 }
 
+function draw_cie1931_xyz_color_match(canvas_id, stepcount = 100 ){
+
+	const canvas = document.getElementById(canvas_id);
+	const ctx = canvas.getContext("2d");
+	const width = canvas.clientWidth;
+	const height = canvas.clientHeight;
+
+	const wavelength_MIN = 360;
+	const wavelength_MAX = 800;
+	const step_size = (wavelength_MAX-wavelength_MIN)/stepcount;
+
+	function ypos( value ){
+		return height*(1 - value/2);
+	}
+	function xpos( wavelen ){
+		return width * (wavelen - wavelength_MIN) / (wavelength_MAX - wavelength_MIN);
+	}
+
+	function drawfunc(color, func){
+		ctx.beginPath();
+		ctx.strokeStyle = color;
+		for(let i = wavelength_MIN; i < wavelength_MAX; i += step_size){
+			let j = i + step_size;
+			ctx.moveTo( xpos(i), ypos( func(i)) );
+			ctx.lineTo( xpos(j), ypos( func(j)) );
+			ctx.stroke();
+		}
+	}
+
+	drawfunc("red", x_bar);
+	drawfunc("green", y_bar);
+	drawfunc("blue", z_bar);
+}
+
 function make_XYZ_gradient_on_canvas(canvas_id, X1, Y1, Z1, X2, Y2, Z2, stopcount = 21){
 	const canvas = document.getElementById(canvas_id);
 	const ctx = canvas.getContext("2d");

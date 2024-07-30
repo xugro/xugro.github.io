@@ -1,4 +1,12 @@
-<!DOCTYPE html>
 <link rel="stylesheet" href="/sheets/navigation.css">
-<nav class="navbar">
-</nav>
+<div class="navbar-wrapper">
+	<header class="navbar">
+		<nav>
+			<ul>
+				{% for p in site.data.navbar-pages %}
+					<li><a{%if page.url == p.link%} class="selected"{%endif%} href="{{p.link}}">{{p.name}}</a></li>
+				{% endfor %}
+			</ul>
+		</nav>
+	</header>
+</div>

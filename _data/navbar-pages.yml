@@ -1,0 +1,8 @@
+- name: Home
+  link: /
+- name: Colors
+  link: /colors/
+- name: Test1
+  link: /index.html
+- name: Test2
+  link: /index.html
