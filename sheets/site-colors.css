@@ -1,14 +1,23 @@
 :root{
+	--primary-background-color: #fdf9fc;
 	--primary-color: #15bac4;
 	--secondary-color: #34b1d6;
 	--accent-color: #44536b;
 	--text-color: black;
-	--primary-background-color: white;
+	--opposite-text-color: white;
+	color-scheme: var(--color-scheme, light);
+
+	/* constant regardless of dark mode */
+	--light-background-color: white;
 }
 @media (prefers-color-scheme: dark){
 	:root{
+		color-scheme: dark;
+		--color-scheme: dark;
 		--text-color: white;
-		--primary-background-color: black;
+		--opposite-text-color: black;
+		--accent-color: #88a6ce;
+		--primary-background-color: #0d090c;
 	}
 }
 

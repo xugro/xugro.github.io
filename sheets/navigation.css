@@ -46,6 +46,6 @@
 	background-color: color-mix(in srgb,var(--accent-color),#0000 73%);
 }
 .navbar nav ul li a:active{
-	background-color: color-mix(in srgb,var(--accent-color),#0000 0%);
-	color: white;
+	background-color: var(--accent-color);
+	color: var(--opposite-text-color);
 }
