@@ -3,5 +3,17 @@
 	--secondary-color: #34b1d6;
 	--accent-color: #44536b;
 	--text-color: black;
+	--primary-background-color: white;
+}
+@media (prefers-color-scheme: dark){
+	:root{
+		--text-color: white;
+		--primary-background-color: black;
+	}
+}
+
+html{
+	background-color: var(--primary-background-color);
+	color: var(--text-color);
 }
 

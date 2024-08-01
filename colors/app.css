@@ -7,6 +7,7 @@
 	padding: 15px;
 	width: 800px;
 	height: 400px;
+	background-color: white;
 }
 .about{
 	position: relative;
@@ -56,6 +57,7 @@
 	border: 2px solid var(--secondary-color);
 	width: 300px;
 	height: calc(100% - 34px);
+	background-color: var(--primary-background-color);
 }
 
 .adjustable-list{
