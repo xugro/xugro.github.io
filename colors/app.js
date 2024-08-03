@@ -32,11 +32,27 @@ function xyY_from_wavelength(lambda){
 	return [x, y, Y];
 }
 
+function xyY_from_XYZ(X, Y, Z){
+	return [ X/(X+Y+Z), Y/(X+Y+Z), Y];
+}
+
+function XYZ_from_xyY(x, y, Y){
+	return [ x*Y/y, Y, (1-x-y)*Y/y];
+}
+
 function sRGB_gamma_correction(C){
 	if( C > 0.0031308 ){
 		return (1.055 * Math.pow(C, 1/2.4)) - 0.055;
 	}else{
-		return 12.92*C;
+		return C*12.92;
+	}
+}
+
+function sRGB_gamma_removal(C){
+	if( C > 0.04045 ){
+		return Math.pow( (C + 0.055)/1.055, 2.4);
+	}else{
+		return C/12.92;
 	}
 }
 
@@ -55,17 +71,40 @@ function XYZ_to_sRGB(X, Y, Z){
 	const b = Math.max(0.0, Math.min(1.0, b_unclamped));
 	return [r, g, b];
 }
+function RGB_to_XYZ(R, G, B){
+	const r_lin = sRGB_gamma_removal(R);
+	const g_lin = sRGB_gamma_removal(G);
+	const b_lin = sRGB_gamma_removal(B);
+	const X = 0.4124*r_lin + 0.3576*g_lin + 0.1805*b_lin;
+	const Y = 0.2126*r_lin + 0.7152*g_lin + 0.0722*b_lin;
+	const Z = 0.0193*r_lin + 0.1192*g_lin + 0.9505*b_lin;
+	return [X, Y, Z];
+}
+function rgb_to_RGB(r, g, b){
+	return [r/255, g/255, b/255];
+}
 function RGB_to_rgb(R, G, B){
 	const r = Math.round(R*255);
 	const g = Math.round(G*255);
 	const b = Math.round(B*255);
 	return "rgb(" + r +"," + g + "," + b +")";
 }
+function rgb_to_XYZ(r, g, b){
+	const [R,G,B] = rgb_to_RGB(r, g, b);
+	return RGB_to_XYZ(R, G, B);
+}
 function XYZ_to_rgb(X,Y,Z){
 //	return "color(xyz "+ X + " " + Y + " " + Z + ")";
 	const [r,g,b] = XYZ_to_sRGB(X,Y,Z);
 	return RGB_to_rgb(r,g,b);
 }
+function rgb_invert_luminance(r, g, b){ // this is for getting dark mode site colors :D
+	const [X1, Y1, Z1] = rgb_to_XYZ(r, g, b);
+	const [x2, y2, Y2] = xyY_from_XYZ(X1, Y1, Z1);
+	const [X3, Y3, Z3] = XYZ_from_xyY(x2, y2, 1-Y2);
+	return XYZ_to_rgb(X3, Y3, Z3);
+}
+
 function XYZ_to_rgb_n(X,Y,Z){ // normalized
 	const x = X;
 	const y = Y;
