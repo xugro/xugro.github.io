@@ -94,16 +94,22 @@
 	margin: 2px 12px;
 }
 .buttons{
+	box-sizing: border-box;
 	display: none;
 	position: relative;
 	border-radius: 10px;
-	border: 0;
+	border: 2px solid var(--secondary-color);
 	cursor: pointer;
-	width: 100px;	
+	width: 110px;	
 	left: 30px;
 	background: var(--secondary-color);
 	text-align: center;
-	margin: 5px 10px;
+	margin: 5px;
+}
+@media (prefers-color-scheme: dark){
+	.buttons{
+		background: color-mix(in srgb,var(--primary-color),#0000 73%);
+	}
 }
 .disabled{
 	opacity: 0.57;
