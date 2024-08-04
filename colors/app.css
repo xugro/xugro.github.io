@@ -118,18 +118,17 @@
 	opacity: 0.57;
 	cursor: not-allowed;
 }
-div.list-element.focustip::after{
+div.focustip{
 	box-sizing: border-box;
 	display: none;
-	content: '';
-	position: absolute;
-	border-radius: 19px;
+	border-radius: 17px;
 	border: 2px solid var(--accent-color);
 	background-color: color-mix(in srgb,var(--primary-color),#0000 90%);
-	height: 80px;
+	height: auto;
 	width: 240px;
+	margin: 0 0 5px;
 	padding: 2px 20px;
-	margin-top: 10px;
+	text-align: start;
 }
 input.selector {
 	position:absolute;
@@ -138,12 +137,8 @@ input.selector {
 	border: 0 !important;
 	z-index: -1;
 }
-input.selector:focus-visible+div.list-element.focustip{
-	margin-bottom: 90px;
-}
-input.selector:focus-visible+div.list-element.focustip::after{
-	content: 'you can use up/down arrow keys to change the number of sources after highlighting the buttons';
-	display: block;
+input.selector:focus-visible+div.list-element.show-focustip~div.focustip{
+	display: inline-block;
 }
 input.selector:focus-visible+div+label,
 input.selector:focus-visible+div+label+label{
