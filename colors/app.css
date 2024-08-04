@@ -64,9 +64,9 @@
 
 .adjustable-list{
 	display: block;
-	position: relative;
-	width: 300px;
+	width: 80%;
 	max-height: 300px;
+	margin: auto;
 	overflow-y: auto;
 	overflow-x: hidden;
 	text-align: center;
@@ -79,7 +79,7 @@
 	border: 2px solid var(--accent-color);
 	background-color: color-mix(in srgb,var(--primary-color),#0000 90%);
 	height: auto;
-	width: 240px;
+	width: 100%;
 	margin: 10px 0 0;
 	padding: 2px 12px;
 	text-align: center;
@@ -105,7 +105,7 @@
 	border-radius: 10px;
 	border: 2px solid var(--secondary-color);
 	cursor: pointer;
-	width: 110px;	
+	width: calc(50% - 10px);	
 	background: var(--secondary-color);
 	margin: 5px;
 }
@@ -125,7 +125,7 @@ div.focustip{
 	border: 2px solid var(--accent-color);
 	background-color: color-mix(in srgb,var(--primary-color),#0000 90%);
 	height: auto;
-	width: 240px;
+	width: 100%;
 	margin: 0 0 5px;
 	padding: 2px 20px;
 	text-align: start;
