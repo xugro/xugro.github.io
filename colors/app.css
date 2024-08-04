@@ -64,12 +64,16 @@
 
 .adjustable-list{
 	display: block;
-	width: 80%;
-	max-height: 300px;
+	width: 240px;
+	margin: auto;
+	text-align: center;
+}
+.adjustable-list-wrapper{
+	max-height: 250px;
 	margin: auto;
 	overflow-y: auto;
 	overflow-x: hidden;
-	text-align: center;
+	scrollbar-gutter: stable both-edges;
 }
 
 .list-element{

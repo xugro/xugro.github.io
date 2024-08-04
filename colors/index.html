@@ -10,23 +10,25 @@ layout: default
 		<object data="CIE1931xy_blank.svg" type="image/svg+xml" class="diagram" id="diagram_cie1931_svg"></object>
 	</div>
 	<div class="smollerbox">
-		<form class="adjustable-list" id="form" method="post">
-			<div class="list-element">
-				<label class="wavelen-label" for="ls0">Wavelength:</label>
-				<input class="wavelen" type="number" name="light-source_0" form="form" min="380" max="700" id="ls0" onchange="update_points()">
-			</div>
-			<input name="switch" value="0" type="radio" class="selector" id="show-0" onchange="detect_change()" checked>
+		<div class="adjustable-list-wrapper">
+			<form class="adjustable-list" id="form" method="post">
+				<div class="list-element">
+					<label class="wavelen-label" for="ls0">Wavelength:</label>
+					<input class="wavelen" type="number" name="light-source_0" form="form" min="380" max="700" id="ls0" onchange="update_points()">
+				</div>
+				<input name="switch" value="0" type="radio" class="selector" id="show-0" onchange="detect_change()" checked>
 
-		{% for i in (1..page.light-source-count) %}
-			<div class="list-element{%if i == 1%} show-focustip{%endif%}">
-				<label class="wavelen-label" for="ls{{i}}">Wavelength:</label>
-				<input class="wavelen" type="number" name="light-source_{{i}}" form="form" min="380" max="700" id="ls{{i}}" onchange="update_points()">
-			</div>
-			<label for="show-{{i}}" class="buttons{%if i == page.light-source-count%} disabled{%endif%}">Add Point</label><label {%if i > 1%}for="show-{{i|minus: 2}}"{%endif%} class="buttons{%if i == 1%} disabled{%endif%}">Remove Point</label>
-			<input name="switch" value="{{i}}" type="radio" class="selector" id="show-{{i}}" onchange="detect_change()"{%if i == page.light-source-count%} disabled{%endif%}>
-		{% endfor %}
-		<div class="focustip">you can use up/down arrow keys to change the number of sources after highlighting the buttons</div>
-		</form>
+			{% for i in (1..page.light-source-count) %}
+				<div class="list-element{%if i == 1%} show-focustip{%endif%}">
+					<label class="wavelen-label" for="ls{{i}}">Wavelength:</label>
+					<input class="wavelen" type="number" name="light-source_{{i}}" form="form" min="380" max="700" id="ls{{i}}" onchange="update_points()">
+				</div>
+				<label for="show-{{i}}" class="buttons{%if i == page.light-source-count%} disabled{%endif%}">Add Point</label><label {%if i > 1%}for="show-{{i|minus: 2}}"{%endif%} class="buttons{%if i == 1%} disabled{%endif%}">Remove Point</label>
+				<input name="switch" value="{{i}}" type="radio" class="selector" id="show-{{i}}" onchange="detect_change()"{%if i == page.light-source-count%} disabled{%endif%}>
+			{% endfor %}
+			<div class="focustip">you can use up/down arrow keys to change the number of sources after highlighting the buttons</div>
+			</form>
+		</div>
 		<div class="settings">
 			<div style="text-align: center;">
 				<select id="diagram_type" form="form" class="setting">
