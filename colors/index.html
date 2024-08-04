@@ -22,8 +22,7 @@ layout: default
 				<label class="wavelen-label" for="ls{{i}}">Wavelength:</label>
 				<input class="wavelen" type="number" name="light-source_{{i}}" form="form" min="380" max="700" id="ls{{i}}" onchange="update_points()">
 			</div>
-			<label for="show-{{i}}" class="buttons{%if i == page.light-source-count%} disabled{%endif%}">Add Point</label>
-			<label {%if i > 1%}for="show-{{i|minus: 2}}"{%endif%} class="buttons{%if i == 1%} disabled{%endif%}">Remove Point</label>
+			<label for="show-{{i}}" class="buttons{%if i == page.light-source-count%} disabled{%endif%}">Add Point</label><label {%if i > 1%}for="show-{{i|minus: 2}}"{%endif%} class="buttons{%if i == 1%} disabled{%endif%}">Remove Point</label>
 			<input name="switch" value="{{i}}" type="radio" class="selector" id="show-{{i}}" onchange="detect_change()"{%if i == page.light-source-count%} disabled{%endif%}>
 		{% endfor %}
 		</form>
