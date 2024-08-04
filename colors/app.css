@@ -136,6 +136,7 @@ input.selector {
 	width: 0;
 	height: 0;
 	border: 0 !important;
+	z-index: -1;
 }
 input.selector:focus-visible+div.list-element.focustip{
 	margin-bottom: 90px;
