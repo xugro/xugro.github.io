@@ -69,21 +69,26 @@
 	max-height: 300px;
 	overflow-y: auto;
 	overflow-x: hidden;
+	text-align: center;
 }
 
 .list-element{
+	box-sizing: border-box;
+	display: inline-block;
 	border-radius: 17px;
 	border: 2px solid var(--accent-color);
 	background-color: color-mix(in srgb,var(--primary-color),#0000 90%);
 	height: auto;
 	width: 240px;
-	margin: 10px auto 0;
+	margin: 10px 0 0;
+	padding: 2px 12px;
+	text-align: center;
 }
 .wavelen-label{
 	display:inline-block;
 	position: relative;
 	overflow-wrap: break-word;
-	margin: 6px 0 6px 24px;
+	margin: 0;
 	vertical-align: middle;
 }
 .wavelen{
@@ -91,7 +96,7 @@
 	width: 40%;
 	height: 16px;
 	vertical-align: middle;
-	margin: 2px 12px;
+	margin: 2px 0;
 }
 .buttons{
 	box-sizing: border-box;
@@ -101,9 +106,7 @@
 	border: 2px solid var(--secondary-color);
 	cursor: pointer;
 	width: 110px;	
-	left: 30px;
 	background: var(--secondary-color);
-	text-align: center;
 	margin: 5px;
 }
 @media (prefers-color-scheme: dark){
