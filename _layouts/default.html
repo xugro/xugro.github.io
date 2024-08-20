@@ -11,7 +11,7 @@
 		{% endif %}
 	</head>
 	<body style="margin: 0;overflow-y: scroll;">
-		{% if false %}
+		{% if jekyll.environment == "development" %}
 			{% include nav.html %}
 		{% endif %}
 		{{ content }}
