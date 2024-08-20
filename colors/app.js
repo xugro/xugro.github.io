@@ -401,8 +401,12 @@ function update_points(){
 	const wavelengths = [];
 
 	for(var i=0; i<point_count; i++){
-		wavelengths.push(document.getElementById("ls"+i).value);
+		const wl = document.getElementById("ls"+i).value;
+		if(wl > 0){
+			wavelengths.push(wl);
+		}
 	}
+	make_points(wavelengths.length);
 	draw_points_from_wavelength(wavelengths);
 }
 
@@ -411,7 +415,6 @@ function detect_change(){
 	for(var i = 0; i < radios.length; i++){
 		if(radios[i].checked && selected_switch_index != i){
 			selected_switch_index = i;
-			make_points(i+2);
 			update_points();
 		}
 	}
