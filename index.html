@@ -1,10 +1,16 @@
 ---
-title: xugro's web projects
+title: xugro's website
 layout: default
 ---
-
-<ul>
-{% for item in site.data.project-list %}
-	<li><a href="{{ item.link }}">{{ item.name }}</a></li>
-{% endfor %}
-</ul>
+{% if jekyll.environment == "production" %}
+	<div style="text-align: center;">
+	Hello! :P
+	</div>
+{% endif %}
+{% if jekyll.environment == "development" %}
+	<ul>
+	{% for item in site.data.project-list %}
+		<li><a href="{{ item.link }}">{{ item.name }}</a></li>
+	{% endfor %}
+	</ul>
+{% endif %}
